@@ -314,6 +314,7 @@ svg.feather.feather-check {
 
 .counter {
   position: relative;
+  z-index: -1;
   animation: fadeUp 600ms ease-in-out forwards;
 }
 
@@ -364,13 +365,22 @@ svg.feather.feather-check {
   align-items: center;
   padding: 1%;
   border-radius: 20px;
+  border: 1px solid var(--purple);
   gap: 20px;
   background-color: #1b1229;
+  transform-style: preserve-3d;
+  transition: all 0.2s ease-in-out;
+}
+
+.service-card:hover{
+  background-position: 80% 20%;
+  transform: rotate3d(0.5,1,30deg);
+  scale: 1.1;
 }
 
 .service-card img {
-  height: 150px;
-  width: 150px;
+  height: 120px;
+  width: 120px;
   object-fit: contain;
 }
 
