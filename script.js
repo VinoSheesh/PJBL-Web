@@ -101,3 +101,68 @@ if (window.innerWidth >= 768) {
   hamburger.style.display = 'block'; 
   navMenu.style.visibility = 'hidden'; 
 }
+
+// SHOW ANS
+
+const questions = document.querySelectorAll('.question-head');
+const answers= document.querySelectorAll('.ans');
+const Qarrows= document.querySelectorAll('.Qarrow');
+
+questions.forEach((question, index) => {
+  question.addEventListener('click', function(){
+    answers.forEach((ans) => {
+      ans.classList.remove('show_ans');
+    });
+    Qarrows.forEach((arrow) => {
+      arrow.classList.remove('rotate_arrow');
+    });
+    let answer = this.nextElementSibling;
+    if(!answer.classList.contains('show_ans')){
+      answer.classList.add('show_ans');
+      Qarrows[index].classList.add('rotate_arrow');
+    }
+  });
+});
+
+async function fetchCryptoData() {
+  const response = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=idr&order=market_cap_desc&per_page=5&page=1&sparkline=true');
+  const data = await response.json();
+  console.log(data); // Debugging untuk memeriksa data
+
+  const tbody = document.getElementById('crypto-data');
+  tbody.innerHTML = ''; // Hapus data lama
+
+  data.forEach(crypto => {
+      const priceChangeClass = crypto.price_change_percentage_24h >= 0 ? 'positive' : 'negative';
+
+      // SVG Grafik
+      const sparkline = crypto.sparkline_in_7d.price.map((price, index) => {
+          const maxPrice = Math.max(...crypto.sparkline_in_7d.price);
+          const minPrice = Math.min(...crypto.sparkline_in_7d.price);
+          const normalizedY = ((price - minPrice) / (maxPrice - minPrice)) * 20; // Normalkan rentang 0-20 px
+          return `<circle cx="${index * 5}" cy="${20 - normalizedY}" r="1" fill="${crypto.price_change_percentage_24h >= 0 ? 'green' : 'red'}"></circle>`;
+      }).join('');
+
+      const row = `
+          <tr>
+              <td>
+                  <img src="${crypto.image}" alt="${crypto.name} logo" width="25" style="vertical-align: middle; margin-right: 8px;">
+                  <strong>${crypto.symbol.toUpperCase()}</strong> ${crypto.name}
+              </td>
+              <td>Rp ${crypto.current_price.toLocaleString()}</td>
+              <td class="${priceChangeClass}">${crypto.price_change_percentage_24h.toFixed(2)}%</td>
+              <td>Rp ${crypto.total_volume.toLocaleString()}</td>
+              <td>Rp ${crypto.market_cap.toLocaleString()}</td>
+              <td>
+                  <svg width="100" height="20">
+                      ${sparkline}
+                  </svg>
+              </td>
+          </tr>
+      `;
+      tbody.innerHTML += row;
+  });
+}
+
+setInterval(fetchCryptoData, 10000); // Update setiap 10 detik
+fetchCryptoData(); // Panggil saat load

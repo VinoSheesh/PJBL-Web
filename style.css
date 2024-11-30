@@ -1,11 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
+@font-face {
+  font-family: PowerGrotesk;
+  src: url(font/PowerGrotesk-UltraBold.woff2);
+}
+
 :root {
-  --white-color:#fff;
-  --black-color:#000;
-  --bg-dark:#1a1a1a;
-  --purple:#9b59b6;
-  --darker-purple:#6c5ce7;
+  --white-color: #fff;
+  --black-color: #000;
+  --bg-dark: #1a1a1a;
+  --purple: #9b59b6;
+  --darker-purple: #6c5ce7;
+  --light-color: #999;
+  --border-color: rgba(131, 131, 131, 0.5);
+  --gradient-color-1: linear-gradient(
+    to right,
+    #2600fc,
+    #ff00ea,
+    #2600fc,
+    #ff00ea,
+    #2600fc
+  );
 }
 
 * {
@@ -17,11 +32,15 @@
   text-decoration: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   max-width: 100%;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    background-color: #0c0516;
+  background-color: #0c0516;
   color: white;
   overflow-x: hidden;
 }
@@ -39,6 +58,7 @@ header {
   align-items: center;
   padding-top: 30px;
   margin: 0 24px;
+  z-index: 999999;
 }
 
 nav {
@@ -119,15 +139,15 @@ nav .btn-signin {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; 
-  z-index: -1; 
-  opacity: 1; 
+  object-fit: cover;
+  z-index: -1;
+  opacity: 1;
   border-radius: 0 0 50px 50px;
 }
 
 .hero {
   width: 100%;
-  height: 100vh;  
+  height: 100vh;
   background-position: center;
   background-size: cover;
   display: flex;
@@ -156,7 +176,14 @@ nav .btn-signin {
   font-size: 6rem;
   line-height: 1.2;
   font-weight: 400;
-  background: linear-gradient(to right, #fc72ff, #8f68ff, #487bff,#8f68ff,#fc72ff);
+  background: linear-gradient(
+    to right,
+    #fc72ff,
+    #8f68ff,
+    #487bff,
+    #8f68ff,
+    #fc72ff
+  );
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   animation: gradient 2s linear infinite;
@@ -193,7 +220,7 @@ nav .btn-signin {
 
 .icon.eth {
   top: ;
-  left:;
+  left: ;
   width: 13rem;
   transform: rotate(-20deg);
 }
@@ -211,7 +238,7 @@ nav .btn-signin {
 }
 
 .about {
- height: fit-content;
+  height: fit-content;
 }
 
 .about .about-container {
@@ -222,10 +249,10 @@ nav .btn-signin {
 
 .about .about-container .divider {
   width: 110px;
-  margin: 3rem auto 3rem;
+  margin: 5rem auto 5rem;
 }
 
-.about .about-container .about-content{
+.about .about-container .about-content {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -237,11 +264,11 @@ nav .btn-signin {
   width: 100%;
   filter: blur(50px);
 }
-.about-content .content-pict{
+.about-content .content-pict {
   animation: float 3s ease-in-out;
 }
 
-.about-content .content-pict img{
+.about-content .content-pict img {
   width: 25rem;
 }
 
@@ -252,15 +279,11 @@ nav .btn-signin {
   justify-content: center;
 }
 
-.about-content .content-description h1{
+.about-content .content-description h1 {
+  font-family: "PowerGrotesk";
   width: fit-content;
   font-size: 4.5rem;
   font-weight: 500;
-  background: linear-gradient(to right, #fc72ff, #8f68ff, #487bff,#8f68ff,#fc72ff);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  animation: gradient 2s linear infinite;
-  background-size: 200%;
   margin-bottom: 15px;
 }
 
@@ -268,7 +291,7 @@ nav .btn-signin {
   width: 70ch;
   font-size: 1.2rem;
   font-weight: 100;
-  color: rgb(213, 213, 213);
+  color: var(--light-color);
   display: flex;
   align-items: center;
   margin-left: 10px;
@@ -286,7 +309,7 @@ nav .btn-signin {
   width: fit-content;
   font-size: 1.2rem;
   font-weight: 100;
-  color: rgb(213, 213, 213);
+  color: var(--light-color);
   margin-left: 10px;
   margin-bottom: 3px;
 }
@@ -303,18 +326,18 @@ svg.feather.feather-check {
 
 .counter-sigma .divider {
   width: 110px;
-  margin: 3rem auto 3rem auto;
+  margin: 5rem auto 5rem;
 }
 
 .about .counter-sigma .counters {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   padding: 0 0rem 1rem;
 }
 
 .counter {
   position: relative;
-  z-index: -1;
+  z-index: 1;
   animation: fadeUp 600ms ease-in-out forwards;
 }
 
@@ -322,10 +345,11 @@ svg.feather.feather-check {
   font-size: 4.5rem;
   text-align: center;
   font-weight: 750;
+  background: var(--gradient-color-1);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
-  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-
+  animation: gradient 4s linear infinite;
+  background-size: 200%;
 }
 
 .counter p {
@@ -335,18 +359,26 @@ svg.feather.feather-check {
 }
 
 .service {
-  height: 100vh;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding:0 10%;
+  padding: 0 10%;
+}
+
+.service .gradient {
+  opacity: 0.5;
+  filter: blur(150px);
+  position: absolute;
+  z-index: -1;
 }
 
 .heading {
   margin: 50px 0;
 }
 
-.heading h1{
+.heading h1 {
+  font-family: "PowerGrotesk";
   font-size: 4rem;
   font-weight: 450;
   margin: 50px 0;
@@ -355,7 +387,7 @@ svg.feather.feather-check {
 .service-cards {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 50px;
 }
 
@@ -365,17 +397,17 @@ svg.feather.feather-check {
   align-items: center;
   padding: 1%;
   border-radius: 20px;
-  border: 1px solid var(--purple);
+  border: 1px solid var(--border-color);
   gap: 20px;
   background-color: #1b1229;
   transform-style: preserve-3d;
   transition: all 0.2s ease-in-out;
 }
 
-.service-card:hover{
+.service-card:hover {
   background-position: 80% 20%;
-  transform: rotate3d(0.5,1,30deg);
-  scale: 1.1;
+  transform: rotate3d(0.5, 1, 30deg);
+  scale: 1.03;
 }
 
 .service-card img {
@@ -385,18 +417,299 @@ svg.feather.feather-check {
 }
 
 .service-card .service-info h2 {
+  font-family: "PowerGrotesk";
   font-size: 1.8rem;
   margin-bottom: 10px;
   font-weight: 500;
+  background: var(--gradient-color-1);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  animation: gradient 4s linear infinite;
+  background-size: 200%;
 }
 
 .service-card .service-info p {
   font-size: 1rem;
   margin-bottom: 10px;
   font-weight: 300;
+  color: var(--light-color);
+}
+
+.faqs {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+}
+
+.faqs .divider {
+  width: 110px;
+  margin: 5rem auto 1rem;
+}
+
+.faqs .headings h1 {
+  font-family: "PowerGrotesk";
+  font-size: 4rem;
+  font-weight: 450;
+  margin: 50px 0;
+}
+
+.faqs .gradient {
+  width: 200px;
+  position: absolute;
+  top: 25%;
+  filter: blur(150px);
+  z-index: -1;
+}
+.faq-questions {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #1b1229;
+  padding: 2%;
+  border-radius: 20px;
+}
+
+.question-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.question-head {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.question-head h2 {
+  font-size: 1.5rem;
+  font-family: "PowerGrotesk";
+  color: var(--light-color);
+  transition: 0.1s ease-in-out;
+}
+
+.question-head h2:hover {
+  color: var(--white-color);
+}
+
+.question-head i {
+  font-size: 2.3rem;
+}
+
+.question-box p {
+  height: 0;
+  opacity: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--light-color);
+  transition: 0.1s ease-in-out;
+}
+
+.show_ans {
+  opacity: 1 !important;
+  height: 50px !important;
+  margin: 5px 0;
+}
+
+.Qarrow {
+  transition: 0.1s ease-in-out;
+}
+
+.rotate_arrow {
+  transform: rotate(180deg);
+}
+
+.crypto-market {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.crypto-market .crypto-heading {
+  font-family: "PowerGrotesk";
+  font-size: 4rem;
+}
+
+.container-crypto {
+  width: 90%;  
+  overflow-x: auto;  
+  margin-bottom: 20px; 
+  padding: 20px;
+}
+.crypto-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+  border-radius: 20px;
+}
+
+.crypto-table th,
+.crypto-table td {
+  padding: 12px;
+}
+
+.crypto-table th {
+  background-color: #1b1229;
+}
+
+.crypto-table tr:hover {
+  background-color: var(--light-color);
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+
+footer {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  background-color: #1b1229;
+}
+
+.footer-bottom {
+  background: #1b1229;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.input-wrap input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 70%;
+  outline: none;
+}
+
+.input-wrap button {
+  padding: 10px;
+  border: none;
+  background: #ff6b6b;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+footer ul {
+  list-style: none;
+}
+footer p {
+  color: #fff;
+  max-width: 25em;
+  font-size: 0.9em;
+  line-height: 23px;
+}
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2em;
+}
+.footer .container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+}
+.brand {
+  display: block;
+  font-size: 1.8em;
+  font-weight: 600;
+  margin-bottom: 1em;
+}
+.media-icons li,
+.services-icons li {
+  display: inline-block;
+  margin: 0.5em 0.5em 0.5em 0;
+}
+.media-icons a {
+  font-size: 1.1em;
+  width: 2em;
+  height: 2em;
+  border: 1px #fff solid;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+.media-icons a:hover {
+  background: #fff;
+  color: #111;
+}
+.services-icons a {
+  font-size: 1.6em;
+}
+.services-icons a:hover {
+  color: #8f68ff;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid var(--light-color);
+  padding: 2em;
+}
+.footer .menu {
+  margin-bottom: 1em;
+}
+.footer .menu li {
+  display: inline-block;
+  margin: 0 0.7em 0.7em 0;
+  text-align: center;
+}
+.footer .menu a {
+  transition: 0.3s;
+  font-weight: 600;
+}
+.footer .menu a:hover {
+  color: #8f68ff;
+}
+.input-wrap {
+  margin: 1em 0;
+  display: flex;
+}
+.input-wrap input {
+  padding: 0.5em;
+  border: none;
+  background: #20232a;
+  color: #ccc;
+}
+.input-wrap input:focus {
+  outline: none;
+}
+.input-wrap button {
+  padding: 0.8em;
+  background: #20232a;
+  border: none;
+  color: #8f68ff;
+  transition: 0.3s;
+}
+.input-wrap button:hover {
+  background: #fff;
+  color: #111;
 }
 #hamburger-menu {
-  display: none;  
+  display: none;
 }
 
 @keyframes gradient {
@@ -415,19 +728,18 @@ svg.feather.feather-check {
   }
 }
 
-@media  (max-width: 1200px) {
+@media (max-width: 1200px) {
   nav ul {
   }
 
-  nav ul li a{
-    
+  nav ul li a {
   }
-  
+
   .hero {
     height: 100vh;
     padding: 2rem;
   }
-  
+
   .hero-content .one {
     font-size: 4.5rem;
     text-align: start;
@@ -457,37 +769,38 @@ svg.feather.feather-check {
     width: 12rem;
     transform: rotate(-20deg);
   }
-  
+
   .icon.btc {
     right: -200px;
     bottom: -300px;
     width: 15rem;
   }
-  
+
   .icon.chart {
     right: 550px;
     top: -60px;
     width: 12rem;
   }
 
-  .about-content .content-pict img{
+  .about-content .content-pict img {
     width: 23rem;
   }
 
-  .about-content .content-description h1{
+  .about-content .content-description h1 {
     font-size: 4rem;
   }
 
   .about-content .content-description p {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    width: 65ch;
   }
 
   .about-content .content-description .checklist p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   .about-content .content-description {
-      width: fit-content;
+    width: fit-content;
   }
 
   svg.feather.feather-check {
@@ -497,7 +810,7 @@ svg.feather.feather-check {
   .counter h1 {
     font-size: 4rem;
   }
-  
+
   .counter p {
     font-size: 1rem;
   }
@@ -507,12 +820,11 @@ svg.feather.feather-check {
   }
 
   .service-card .service-info p {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 1024px) {
-
   nav ul li a {
     font-size: 1rem;
     padding: 0.8rem 0;
@@ -526,18 +838,18 @@ svg.feather.feather-check {
     height: 100vh;
     padding: 2rem;
   }
-  
+
   .hero-content .one {
     font-size: 4.3rem;
     text-align: start;
   }
 
   .hero-content .two span {
-    font-size: 4.3rem ;
+    font-size: 4.3rem;
   }
 
   .hero-content .two {
-    font-size: 2.7rem ;
+    font-size: 2.7rem;
   }
 
   .hero-content .three {
@@ -555,34 +867,34 @@ svg.feather.feather-check {
     width: 12rem;
     transform: rotate(-20deg);
   }
-  
+
   .icon.btc {
     right: -200px;
     bottom: -300px;
     width: 15rem;
   }
-  
+
   .icon.chart {
     right: 550px;
     top: -60px;
     width: 12rem;
   }
 
-  .about-content .content-pict img{
+  .about-content .content-pict img {
     width: 18rem;
   }
 
-  .about-content .content-description h1{
+  .about-content .content-description h1 {
     font-size: 3.3rem;
   }
 
   .about-content .content-description p {
-    width: 60ch;
-    font-size: .9rem;
+    width: 58ch;
+    font-size: 1rem;
   }
 
   .about-content .content-description .checklist p {
-    font-size: .9rem;
+    font-size: 1.1rem;
   }
 
   .about-content .content-description {
@@ -596,7 +908,7 @@ svg.feather.feather-check {
   .counter h1 {
     font-size: 4rem;
   }
-  
+
   .counter p {
     font-size: 1rem;
   }
@@ -606,6 +918,21 @@ svg.feather.feather-check {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+  }
+
+  .footer .container {
+    flex-direction: column;
+  }
+
+  .crypto-table {
+    font-size: 14px; 
+  }
+  .crypto-table th,
+  .crypto-table td {
+    padding: 10px 12px; 
+  }
+  .crypto-table img {
+    width: 20px;
   }
 }
 
@@ -635,8 +962,8 @@ svg.feather.feather-check {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-     border: 1px solid rgba(153, 153, 153, 0.3);
-     visibility: hidden;
+    border: 1px solid rgba(153, 153, 153, 0.3);
+    visibility: hidden;
     opacity: 0;
     transform: translateY(-20px);
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -673,7 +1000,7 @@ svg.feather.feather-check {
     height: 100vh;
     padding: 2rem;
   }
-  
+
   .hero-content .one {
     font-size: 3.5rem;
     text-align: start;
@@ -702,47 +1029,47 @@ svg.feather.feather-check {
     width: 10rem;
     transform: rotate(-20deg);
   }
-  
+
   .icon.btc {
     right: -100px;
     bottom: -300px;
     width: 13rem;
   }
-  
+
   .icon.chart {
     right: 450px;
     top: -20px;
     width: 10rem;
   }
 
-  .about .about-container .about-content{
+  .about .about-container .about-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
   }
 
-  .about-content .content-pict img{
+  .about-content .content-pict img {
     width: 18rem;
   }
 
-  .about-content .content-description h1{
+  .about-content .content-description h1 {
     font-size: 3.3rem;
   }
 
   .about-content .content-description p {
     width: 60ch;
-    font-size: .9rem;
+    font-size: 1.1rem;
   }
 
   .about-content .content-description .checklist p {
-    font-size: .9rem;
+    font-size: 1.2rem;
     margin-left: 10px;
     margin-bottom: 3px;
   }
 
   .about-content .content-description {
-      width: fit-content;
+    width: fit-content;
   }
 
   svg.feather.feather-check {
@@ -752,9 +1079,25 @@ svg.feather.feather-check {
   .counter h1 {
     font-size: 3.5rem;
   }
-  
+
   .counter p {
-    font-size: .8rem;
+    font-size: 0.8rem;
+  }
+
+  .crypto-market .crypto-heading {
+    font-family: "PowerGrotesk";
+    font-size: 3rem;
+  }
+
+  .crypto-table {
+    font-size: 12px; /* Lebih kecil di layar kecil */
+  }
+  .crypto-table th,
+  .crypto-table td {
+    padding: 8px 10px; /* Kurangi padding lebih jauh */
+  }
+  .crypto-table img {
+    width: 18px; /* Sesuaikan ukuran logo */
   }
 }
 
@@ -772,7 +1115,7 @@ svg.feather.feather-check {
     height: 100vh;
     padding: 2rem;
   }
-  
+
   .hero-content .one {
     font-size: 2.1rem;
     text-align: start;
@@ -798,53 +1141,53 @@ svg.feather.feather-check {
 
   .icon.eth {
     top: -510px;
-    left:55%;
+    left: 55%;
     width: 13rem;
     transform: rotate(-20deg);
   }
-  
+
   .icon.btc {
     right: -200px;
     bottom: -500px;
     width: 23rem;
   }
-  
+
   .icon.chart {
     right: 800px;
     top: -100px;
     width: 13rem;
   }
 
-  .about .about-container .about-content{
+  .about .about-container .about-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
   }
 
-  .about-content .content-pict img{
+  .about-content .content-pict img {
     width: 13rem;
   }
 
-  .about-content .content-description h1{
+  .about-content .content-description h1 {
     font-size: 2.6rem;
     margin-left: 10px;
   }
 
   .about-content .content-description p {
-    width: 60ch;
-    font-size: .7rem;
+    width: 50ch;
+    font-size: 0.8rem;
     margin-left: 10px;
   }
 
   .about-content .content-description .checklist p {
-    font-size: .7rem;
+    font-size: 0.7rem;
     margin-left: 10px;
     margin-bottom: 3px;
   }
 
   .about-content .content-description {
-      width: fit-content;
+    width: fit-content;
   }
 
   svg.feather.feather-check {
@@ -854,19 +1197,59 @@ svg.feather.feather-check {
   .counter h1 {
     font-size: 2.9rem;
   }
-  
+
   .counter p {
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
 
-  
+  .service-card .service-info p {
+    font-size: 0.9rem;
+  }
+
+  .service .heading h1 {
+    font-size: 2.5rem;
+  }
+
+  .service-card img {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+  }
+
+  .service-card .service-info h2 {
+    font-size: 1.5rem;
+  }
+
+  .service-card .service-info p {
+    font-size: 0.8rem;
+  }
+
+  .faqs .headings h1 {
+    font-size: 2.5rem;
+  }
+
+  .question-head h2 {
+    font-size: 1rem;
+  }
+
+  .question-box p {
+    font-size: 0.8rem;
+  }
+
+  .crypto-market .crypto-heading {
+    font-family: "PowerGrotesk";
+    font-size: 2.5rem;
+  }
+
+  .crypto-table {
+    font-size: 10px; /* Ukuran font lebih kecil lagi */
+    overflow-x: scroll;
+  }
+  .crypto-table th,
+  .crypto-table td {
+    padding: 6px 8px;
+  }
+  .crypto-table img {
+    width: 15px; /* Ukuran logo lebih kecil */
+  }
 }
-
-
-
-
-
-
-
-
-

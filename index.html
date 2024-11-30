@@ -14,7 +14,7 @@
 
 <body>
 
-    <section class="hero">
+    <section class="hero" id="home">
 
         <video autoplay muted loop class="hero-video">
             <source src="vid/videoplayback.webm" type="video/mp4">
@@ -25,9 +25,9 @@
             <nav>
                 <div class="logo">FlyX</div>
                 <ul id="nav-menu">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#service">Services</a></li>
                     <li><a href="#">News</a></li>
                     <li><a href="#">Support</a></li>
                     <a href="#" class="btn-signin">Sign In</a>
@@ -63,7 +63,7 @@
         
     </section>
 
-    <section class="about">
+    <section class="about" id="about">
         <div class="about-container">
             <img src="img/shape_101.svg" alt="" class="bgblur">
             <img src="img/shape_1.svg" alt="" class="divider">
@@ -83,6 +83,7 @@
         </div>
 
         <div class="counter-sigma">
+            
             <img src="img/shape_1.svg" alt="" class="divider">
             <div class="counters">
                 <div class="counter">
@@ -103,7 +104,12 @@
         </div>
     </section>
 
-    <section class="service">
+    <section class="service" id="service">
+
+        <div class="gradient">
+            <img src="img/gradient_bg01.png" alt="">
+             </div>
+
         <div class="heading">
         <h1>Our Service</h1>
         </div>
@@ -142,6 +148,142 @@
         </div>
     </div>
     </section>
+
+    <section class="faqs">
+        <img src="img/shape_1.svg" alt="" class="divider">
+        <img src="img/gradient-circle.svg" alt="" class="gradient">
+        <div class="headings">
+            <h1>Asked Question</h1>
+        </div>
+
+        <div class="faq-questions">
+            <div class="question-box">
+                <div class="question-head">
+                    <h2>What is Crypto?</h2>
+                    <i data-feather="chevron-down" class="Qarrow"></i>
+                </div>
+                <p class="ans">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+                    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+            </div>
+
+            <div class="question-box">
+                <div class="question-head">
+                    <h2>What is Bitcoin?</h2>
+                    <i data-feather="chevron-down" class="Qarrow"></i>
+                </div>
+                <p class="ans">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+                    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+            </div>
+
+            <div class="question-box">
+                <div class="question-head">
+                    <h2>How to buy Crypto?</h2>
+                    <i data-feather="chevron-down" class="Qarrow"></i>
+                </div>
+                <p class="ans">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+                    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+            </div>
+
+            <div class="question-box">
+                <div class="question-head">
+                    <h2>What is diversification?</h2>
+                    <i data-feather="chevron-down" class="Qarrow"></i>
+                </div>
+                <p class="ans">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+                    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+            </div>
+
+            <div class="question-box">
+                <div class="question-head">
+                    <h2>What is Memecoin?</h2>
+                    <i data-feather="chevron-down" class="Qarrow"></i>
+                </div>
+                <p class="ans">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+                    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+            </div>
+
+            <div class="question-box">
+                <div class="question-head">
+                    <h2>How to sell Crypto?</h2>
+                    <i data-feather="chevron-down" class="chevron-down Qarrow"></i>
+                </div>
+                <p class="ans">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+                    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+            </div>
+        </div>
+    </section>
+
+<section class="crypto-market">
+    <h1 class="crypto-heading">Pasar Crypto</h1>
+    <div class="container-crypto">
+        <table class="crypto-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Current Price</th>
+                    <th>Price Change 24hr</th>
+                    <th>Total Volume</th>
+                    <th>Market Cap </th>
+                    <th>Statistic</th>
+                </tr>
+            </thead>
+            <tbody id="crypto-data">
+             
+            </tbody>
+        </table>
+        
+    </div>
+</section>
+    <footer class="footer">
+        <div class="waves">
+            <div class="wave" id="wave"></div>
+            <div class="wave" id="wave"></div>
+            <div class="wave" id="wave"></div>
+            <div class="wave" id="wave"></div>
+        </div>
+        <div class="container">
+          <div class="col1">
+            <a href="#" class="brand">FlyX</a>
+            <ul class="media-icons">
+              <li>
+                <a href="#"><i data-feather="youtube" class="fa-brands fa-youtube"></i></a>
+              </li>
+              <li>
+                <a href="#"><i data-feather="twitter" class="fa-brands fa-discord"></i></a>
+              </li>
+              <li>
+                <a href="#"><i data-feather="instagram" class="fa-brands fa-instagram"></i></a>
+              </li>
+              <li>
+                <a href="#"><i data-feather="facebook" class="fa-brands fa-github"></i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col2">
+            <ul class="menu">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Service</a></li>
+              <li><a href="#">News</a></li>
+              <li><a href="#">Support</a></li>
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem excepturi ipsam unde obcaecati iusto velit labore consequuntur officiis aut neque?</p>
+            </ul>
+          </div>
+          <div class="col3">
+            <p>Subscribe to our newslatter</p>
+            <form>
+              <div class="input-wrap">
+                <input type="email" placeholder="ex@gmail.com" /><button type="submit"><i data-feather="search" class="fa-solid fa-paper-plane"></i></button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="mekk">
+            <p>©VinDev 2024 - All Rights Reserved</p>
+          </div>
+        </div>
+      </footer>
 
     
 
