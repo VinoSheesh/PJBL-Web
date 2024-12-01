@@ -8,23 +8,25 @@ counterContainer.forEach(container => {
   let activated = false;
 
   window.addEventListener("scroll", () => {
+    const customOffset = window.innerHeight / 1; // Elemen muncul lebih dekat ke tengah layar
+  
     if (
-      scrollY > container.offsetTop - container.offsetHeight - 200 &&
-      activated === false
+      scrollY > container.offsetTop - customOffset &&
+      !activated
     ) {
       counterItems.forEach((item, i) => {
         item.style.animation = "fadeUp 600ms ease-in-out forwards";
         item.style.animationDelay = 0.2 * i + "s";
       });
-
+  
       counters.forEach(counter => {
         counter.innerText = 0;
         let count = 0;
-
+  
         function updateCount() {
           const target = parseInt(counter.dataset.count);
           const speed = parseInt(counter.dataset.speed);
-
+  
           if (count < target) {
             count++;
             counter.innerText = count;
@@ -33,21 +35,23 @@ counterContainer.forEach(container => {
             counter.innerText = target;
           }
         }
-
+  
         updateCount();
-        activated = true;
       });
-    } else if(
-      scrollY < container.offsetTop - container.offsetHeight - 500 || scrollY === 0
-      && activated === true
+  
+      activated = true;
+    } else if (
+      scrollY < container.offsetTop - customOffset - 100 &&
+      activated
     ) {
-      counters.forEach(counter => counter.innerText = 0);
-
-      counterItems.forEach(item => item.style.animation = "none");
-
+      counters.forEach(counter => (counter.innerText = 0));
+  
+      counterItems.forEach(item => (item.style.animation = "none"));
+  
       activated = false;
     }
   });
+  
 });
 hamburger.addEventListener('click', () => {
   if (navMenu.classList.contains('active')) {
@@ -102,7 +106,7 @@ if (window.innerWidth >= 768) {
   navMenu.style.visibility = 'hidden'; 
 }
 
-// SHOW ANS
+
 
 const questions = document.querySelectorAll('.question-head');
 const answers= document.querySelectorAll('.ans');
@@ -127,26 +131,25 @@ questions.forEach((question, index) => {
 async function fetchCryptoData() {
   const response = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=idr&order=market_cap_desc&per_page=5&page=1&sparkline=true');
   const data = await response.json();
-  console.log(data); // Debugging untuk memeriksa data
+  console.log(data); 
 
   const tbody = document.getElementById('crypto-data');
-  tbody.innerHTML = ''; // Hapus data lama
+  tbody.innerHTML = ''; 
 
   data.forEach(crypto => {
       const priceChangeClass = crypto.price_change_percentage_24h >= 0 ? 'positive' : 'negative';
 
-      // SVG Grafik
       const sparkline = crypto.sparkline_in_7d.price.map((price, index) => {
           const maxPrice = Math.max(...crypto.sparkline_in_7d.price);
           const minPrice = Math.min(...crypto.sparkline_in_7d.price);
-          const normalizedY = ((price - minPrice) / (maxPrice - minPrice)) * 20; // Normalkan rentang 0-20 px
+          const normalizedY = ((price - minPrice) / (maxPrice - minPrice)) * 20; 
           return `<circle cx="${index * 5}" cy="${20 - normalizedY}" r="1" fill="${crypto.price_change_percentage_24h >= 0 ? 'green' : 'red'}"></circle>`;
       }).join('');
 
       const row = `
           <tr>
               <td>
-                  <img src="${crypto.image}" alt="${crypto.name} logo" width="25" style="vertical-align: middle; margin-right: 8px;">
+                  <img src="${crypto.image}" alt="${crypto.name} logo" width="35" style="vertical-align: middle; margin-right: 8px;">
                   <strong>${crypto.symbol.toUpperCase()}</strong> ${crypto.name}
               </td>
               <td>Rp ${crypto.current_price.toLocaleString()}</td>
@@ -164,5 +167,12 @@ async function fetchCryptoData() {
   });
 }
 
-setInterval(fetchCryptoData, 10000); // Update setiap 10 detik
+setInterval(fetchCryptoData, 1000000); // Update setiap 10 detik
 fetchCryptoData(); // Panggil saat load
+
+AOS.init({
+  offset: window.innerWidth <= 768 ? 30 : 100,  // 50px di perangkat mobile, 100px di desktop
+  duration: 1000,  // Durasi animasi
+  easing: 'ease-in-out',
+  once: true  // Efek hanya terjadi sekali saat scroll
+});
